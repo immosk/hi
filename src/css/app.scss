@@ -29,31 +29,9 @@ p {
 }
 
 .text-harris {
-    color: #FF4D00;
+    color: #3ee6b4;
 }
 
 .rounded-xl {
-    border-radius: 10px;
-}
-
-.custom-caption {
-  text-align: center;
-  padding: 12px;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-.card-menu {
-  width: 100%;
-}
-
-.bg-img {
-  background-image: url("~assets/img_food.png");
-  background-repeat: no-repeat;
-}
-
-.overlay {
-  height: 100%;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.37);
+    border-radius: 20px;
 }

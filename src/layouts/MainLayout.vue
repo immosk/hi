@@ -16,21 +16,17 @@
         </q-btn>
 
         <q-toolbar-title>
-          <!-- Quasar App -->
+          <div class="text-bold text-black">Hi</div> 
         </q-toolbar-title>
 
         <div class="q-pa-md">
           <q-btn
             flat
-            dense
-            round
-            aria-label="Menu"
+            rounded
+            unelevated
+            class="bg-primary"
           >
-            <img
-              class=""
-              alt="logo cart"
-              src="~assets/icon_cart.svg"
-            >
+            <div class="q-px-md q-py-sm text-bold text-capitalize text-white">Get A Quotation</div>
           </q-btn>
         </div>
       </q-toolbar>
@@ -47,7 +43,7 @@
           header
           class="bg-white"
         >
-          Essential Links
+          <!-- Essential Links -->
         </q-item-label>
         <EssentialLink
           class="bg-white"
@@ -70,27 +66,27 @@ import EssentialLink from 'components/EssentialLink.vue'
 const linksData = [
   {
     title: 'Home',
-    caption: 'Home',
+    caption: '',
     icon: 'home',
     link: '/'
   },
   {
-    title: 'Food',
-    caption: 'Food',
+    title: 'About',
+    caption: '',
     icon: 'code',
-    link: '/food'
+    link: '/about'
   },
   {
-    title: 'Beverage',
-    caption: 'Beverage',
-    icon: 'chat',
-    link: '/beverage'
+    title: 'Portfolio',
+    caption: '',
+    icon: 'card_membership',
+    link: '#portfolio'
   },
   {
-    title: 'Dessert',
-    caption: 'Dessert',
-    icon: 'record_voice_over',
-    link: '/dessert'
+    title: 'Contact',
+    caption: '',
+    icon: 'phone',
+    link: '/contact'
   }
 ];
 
