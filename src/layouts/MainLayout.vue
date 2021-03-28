@@ -2,7 +2,7 @@
   <q-layout view="lHh Lpr lFf">
     <q-header>
       <q-toolbar class="bg-white">
-        <q-btn
+        <!-- <q-btn
           flat
           dense
           round
@@ -13,10 +13,10 @@
             alt="menu"
             src="~assets/icon_menu.svg"
           >
-        </q-btn>
+        </q-btn> -->
 
         <q-toolbar-title>
-          <div class="text-bold text-black">Hi</div> 
+          <div class="text-bold text-black"></div> 
         </q-toolbar-title>
 
         <div class="q-pa-md">
@@ -26,13 +26,13 @@
             unelevated
             class="bg-primary"
           >
-            <div class="q-px-md q-py-sm text-bold text-capitalize text-white">Get A Quotation</div>
+            <div class="q-px-md q-py-sm text-bold text-capitalize text-white">Contact</div>
           </q-btn>
         </div>
       </q-toolbar>
     </q-header>
 
-    <q-drawer
+    <!-- <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
       bordered
@@ -43,7 +43,6 @@
           header
           class="bg-white"
         >
-          <!-- Essential Links -->
         </q-item-label>
         <EssentialLink
           class="bg-white"
@@ -52,7 +51,7 @@
           v-bind="link"
         />
       </q-list>
-    </q-drawer>
+    </q-drawer> -->
 
     <q-page-container>
       <router-view />
