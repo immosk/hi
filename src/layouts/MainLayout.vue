@@ -2,19 +2,6 @@
   <q-layout view="lHh Lpr lFf">
     <q-header>
       <q-toolbar class="bg-white">
-        <!-- <q-btn
-          flat
-          dense
-          round
-          aria-label="Menu"
-          @click="leftDrawerOpen = !leftDrawerOpen"
-        >
-          <img
-            alt="menu"
-            src="~assets/icon_menu.svg"
-          >
-        </q-btn> -->
-
         <q-toolbar-title>
           <div class="text-bold text-black"></div> 
         </q-toolbar-title>
@@ -25,33 +12,12 @@
             rounded
             unelevated
             class="bg-primary"
-          >
+            @click="onClickContact()" >
             <div class="q-px-md q-py-sm text-bold text-capitalize text-white">Contact</div>
           </q-btn>
         </div>
       </q-toolbar>
     </q-header>
-
-    <!-- <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-      content-class="bg-white"      
-    >
-      <q-list class="border-primary">
-        <q-item-label
-          header
-          class="bg-white"
-        >
-        </q-item-label>
-        <EssentialLink
-          class="bg-white"
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
-    </q-drawer> -->
 
     <q-page-container>
       <router-view />
@@ -60,44 +26,25 @@
 </template>
 
 <script>
-import EssentialLink from 'components/EssentialLink.vue'
 
-const linksData = [
-  {
-    title: 'Home',
-    caption: '',
-    icon: 'home',
-    link: '/'
-  },
-  {
-    title: 'About',
-    caption: '',
-    icon: 'code',
-    link: '/about'
-  },
-  {
-    title: 'Portfolio',
-    caption: '',
-    icon: 'card_membership',
-    link: '#portfolio'
-  },
-  {
-    title: 'Contact',
-    caption: '',
-    icon: 'phone',
-    link: '/contact'
-  }
-];
+
 
 export default {
   name: 'MainLayout',
-  components: { EssentialLink },
   data () {
-    return {
-      leftDrawerOpen: false,
-      essentialLinks: linksData
+    return { }
+  }, 
+  methods: {
+    onClickContact () {
+      const el = document.getElementById('footer');
+
+      if (el) {
+        el.scrollIntoView({behavior: 'smooth'});
+      }
     }
   }
+
+  
 }
 </script>
 
