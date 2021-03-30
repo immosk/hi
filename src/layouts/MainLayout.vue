@@ -3,7 +3,7 @@
     <q-header>
       <q-toolbar class="bg-white">
         <q-toolbar-title>
-          <div class="text-bold text-black"></div> 
+          <div class="text-bold text-primary">HIGH INOVATION</div> 
         </q-toolbar-title>
 
         <div class="q-pa-md">

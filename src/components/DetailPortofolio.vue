@@ -1,35 +1,129 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
-    <q-btn label="Maximized" color="primary" @click="dialog = true" />
-
     <q-dialog
-      v-model="dialog"
+      v-model="dialogModel"
       persistent
-      :maximized="maximizedToggle"
       transition-show="slide-up"
-      transition-hide="slide-down"
-    >
-      <q-card class="bg-primary text-white">
+      transition-hide="slide-down">
+
+      <q-card 
+        class="bg-primary text-white"
+        style="max-width: 1500px; min-width: 1100px;">
         <q-bar>
+          <div class="text-bold text-h4">HI POS</div>
+
           <q-space />
 
-          <q-btn dense flat icon="minimize" @click="maximizedToggle = false" :disable="!maximizedToggle">
-            <q-tooltip v-if="maximizedToggle" content-class="bg-white text-primary">Minimize</q-tooltip>
-          </q-btn>
-          <q-btn dense flat icon="crop_square" @click="maximizedToggle = true" :disable="maximizedToggle">
-            <q-tooltip v-if="!maximizedToggle" content-class="bg-white text-primary">Maximize</q-tooltip>
-          </q-btn>
           <q-btn dense flat icon="close" v-close-popup>
             <q-tooltip content-class="bg-white text-primary">Close</q-tooltip>
           </q-btn>
         </q-bar>
 
-        <q-card-section>
-          <div class="text-h6">Alert</div>
-        </q-card-section>
+        <!-- <q-card-section>
+          <div class="text-h6">HI POS</div>
+        </q-card-section> -->
 
-        <q-card-section class="q-pt-none">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum repellendus sit voluptate voluptas eveniet porro. Rerum blanditiis perferendis totam, ea at omnis vel numquam exercitationem aut, natus minima, porro labore.
+        <q-card-section class="q-pt-none scroll" style="max-height: 70vh">
+          <div class="q-ma-sm">
+            <q-card flat class="detail-section-1-bg-primary rounded-xl">
+              <q-card-section>
+                <div class="row">
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="row"> 
+                      <div class="text-bold text-h5 q-pa-mx">Features</div> 
+                      <q-icon class="q-pa-mx q-my-sm q-mx-sm" name="help">
+                        <q-tooltip content-class="bg-white text-primary">* Base on your subscription </q-tooltip>
+                      </q-icon> 
+                    </div>
+
+                    <div class="q-px-md q-pt-md">• Cloud base </div>
+                    <div class="q-px-md">• Get Revenue, Article Stock, Sales and many more within Aurora's Dashboard </div>
+                    <div class="q-px-md">• Manage your team role in Employee tab section * </div>
+                    <div class="q-px-md">• Add category and article * </div>
+                    <div class="q-px-md">• Add your valueable customer and keep in touch </div>
+                    <div class="q-px-md">• Of course it is, Reporting!! </div>
+                    <div class="q-px-md">• All your preferences inside your tablet </div>
+                    <div class="q-px-md">• Manage multiple Outlet * </div>
+
+                  </div>
+                  
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                      <q-img 
+                        src="../../public/assets/hi-pos-disp-cashier-1.png"
+                      />
+                  </div>
+                </div>
+              </q-card-section>
+            </q-card>
+          </div>
+
+          <div class="q-ma-sm">
+            <q-card flat class="detail-section-1-bg-primary rounded-xl">
+              <q-card-section>
+                <div class="row">
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="text-bold text-h5 q-pa-mx">Connect to your Mini Bluetooth Printer</div>
+
+                    <div class="q-px-md q-pt-md">• Print all recipe to your customer. Don't want use a paper? We send it to your customer mail </div>
+
+                  </div>
+                  
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                      <q-img 
+                        src="../../public/assets/printer.png"
+                        height="300px"
+                        width="300px"
+                      />
+                  </div>
+                </div>
+              </q-card-section>
+            </q-card>
+          </div>
+
+          <div class="q-ma-sm">
+            <q-card flat class="detail-section-1-bg-primary rounded-xl">
+              <q-card-section>
+                <div class="row">
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="row"> 
+                        <div class="text-bold text-h5 q-pa-mx">Connect to your Bluetooth Scanner</div>
+                        <q-icon class="q-pa-mx q-my-sm q-mx-sm" name="help">
+                          <q-tooltip content-class="bg-white text-primary">Only support 1D scanner (EAN or UPC) </q-tooltip>
+                        </q-icon> 
+                      </div>
+
+                    <div class="q-px-md q-pt-md">• Scan barcode item with easy configuration  </div>
+                  </div>
+                  
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                      <q-img 
+                        src="../../public/assets/scanner.png"
+                        height="300px"
+                        width="300px" />
+                  </div>
+                </div>
+              </q-card-section>
+            </q-card>
+          </div>
+
+          <div class="q-ma-sm">
+            <div class="row">
+              <div>
+                <q-btn type="a" href="http://google.com" target="_blank" flat rounded unelevated class="bg-white q-mx-xl q-mb-xl">
+                  <div class="q-px-md q-py-sm text-bold text-capitalize text-primary">
+                    Download
+                  </div>
+                </q-btn>
+
+                 <q-btn @click="onClickAboutUs()" flat rounded unelevated class="bg-white q-mx-xl q-mb-xl">
+                  <div class="q-px-md q-py-sm text-bold text-capitalize text-primary">
+                    Subscription Only Rp.50K / month
+                  </div>
+                </q-btn>
+              </div>                  
+            </div>
+          </div>
+
         </q-card-section>
       </q-card>
     </q-dialog>
@@ -37,8 +131,37 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
+import { defineComponent, watch, computed, toRefs, reactive } from "@vue/composition-api";
+
+
+export default defineComponent({
+  props: {
+    showDialogDetail: {type: Boolean, required: true },
+  }, 
+  setup(props, {emit}) {
+
+    const state = reactive({
+
+    });
+
+    watch(() => props.showDialogDetail, (showDialogDetail) => {
+      if (props.showDialogDetail) {
+
+      }
+    });
+
+    const dialogModel = computed({
+      get: () => props.showDialogDetail,
+      set: (val) => {
+        emit('onDialogDetail', val);
+      },
+    });
+
+    return {
+      ...toRefs(state),
+      dialogModel,
+    }
+  },
     
 })
 </script>

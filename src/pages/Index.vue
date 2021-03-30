@@ -6,9 +6,9 @@
           HI
         </p>
 
-        <p class="text-bold text-h5 text-uppercase q-mt-sm text-primary">
+        <!-- <p class="text-bold text-h5 text-uppercase q-mt-sm text-primary">
           HIGH INOVATION
-        </p>
+        </p> -->
 
       </div>
     </div>
@@ -53,7 +53,17 @@
                   <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="text-bold text-h3 q-pa-xl text-desc-color">{{ data['name'] }}</div>
                     <div class="text-h4 q-px-xl q-py-md">{{ data['desc'] }}</div>
-                    <div class="text-h5 q-px-xl q-pb-md">{{ slide == 1 ? data['imagedata'][0]['desc']: slide == 2 ? data['imagedata'][1]['desc'] : slide == 3 ? data['imagedata'][2]['desc'] : data['imagedata'][3]['desc'] }}</div>
+
+                    <template v-for="dataDesc in data['imagedata']">
+                      <div 
+                        :key="dataDesc['id']" 
+                        class="text-h5 q-px-xl q-pb-md">
+                          <div v-if="dataDesc['id'] == slide">
+                            {{ dataDesc['desc']}}
+                          </div>
+                        </div>
+                    </template>
+                    <!-- <div class="text-h5 q-px-xl q-pb-md">{{ slide == 1 ? data['imagedata'][0]['desc']: slide == 2 ? data['imagedata'][1]['desc'] : slide == 3 ? data['imagedata'][2]['desc'] : data['imagedata'][3]['desc'] }}</div> -->
                     
                     <q-btn @click="onClickDetailSection(data['id'])" flat rounded unelevated class="bg-primary q-mx-xl q-mb-xl">
                       <div
@@ -74,11 +84,6 @@
                         <template v-for="dataimage in data['imagedata']"> 
                           <q-carousel-slide :key="dataimage['id']" :name="dataimage['id']" :img-src="(dataimage['image'])" />
                         </template>
-
-                        <!-- <q-carousel-slide :name="1" :img-src="(data['imagedata'][0]['image'])" />
-                        <q-carousel-slide :name="2" :img-src="(data['imagedata'][1]['image'])" />
-                        <q-carousel-slide :name="3" :img-src="(data['imagedata'][2]['image'])" />
-                        <q-carousel-slide :name="4" :img-src="(data['imagedata'][3]['image'])" /> -->
                       </q-carousel>
                       
                       <!-- <q-img 
@@ -95,21 +100,25 @@
     <section id="footer">
       <q-card flat class="q-mx-sm q-mt-sm bg-primary">
         <q-card-section>
-          <!-- <div class="col text-center">
 
-            <div class="row">
-              <div class="col">
-                <q-img src="~assets/ic-email.png" width="40px" height="40px"/>
-              </div>              
-              
-              <div class="col">
-                <q-img src="~assets/ic-linkedin.png" width="40px" height="40px"/>
-                <p class="text-white">tes1</p>
-              </div>
+          <div class="row justify-center">
+            <div class="col-12 col-md-auto">
+              <q-img class="q-ma-sm" src="~assets/ic-linkedin.png" width="40px" height="40px"/>
             </div>
 
-          </div> -->
+            <div class="col-12 col-md-auto">
+              <q-img class="q-ma-sm" src="~assets/ic-email.png" width="40px" height="40px"/>
+            </div>
+
+            <div class="col-12 col-md-auto">
+              <q-img class="q-ma-sm" src="~assets/ic-wa.png" width="40px" height="40px"/>
+            </div>
+
+          </div>
         </q-card-section>
+
+        <dialogDetail :showDialogDetail="showDialogDetail" @onDialogDetail="onDialogDetail"/>
+
       </q-card>
     </section>
   </q-page>
@@ -118,17 +127,19 @@
 <script>
 import { defineComponent, reactive, toRefs, onMounted, } from "@vue/composition-api";
 import { Notify } from "quasar";
+import DetailPortofolio from "../components/DetailPortofolio.vue";
 
 export default defineComponent({
   name: "PageIndex",
 
-  setup(_, {$root}) {
+  setup(props, {$root}) {
     const state = reactive({
       attention: "Get to know us more closely",
-      dataPortofolio: [{id: 0, title: 'HI POS', name: 'Point Of Sales', desc: 'Manage all your business needs in your hand', imagedata: [{id: 1, desc: 'Realtime Dashboard, see how your outlet grow', image: 'assets/hi-pos-disp-dashboard-1.png'}, {id: 2, desc: 'Add an item and ready to sale ', image: 'assets/hi-pos-disp-edit-lib-1.png'}, {id: 3, desc: 'Cashier with best experience', image:'assets/hi-pos-disp-cashier-1.png'}, {id: 4, desc: 'All your preferences inside your tablet', image: 'assets/hi-pos-disp-pref-1.png'}], cssdata : {'bg-color-primary': 'section-1-bg-primary', 'bg-color-secondary':'section-1-bg-secondary', 'text-color-primary': 'section-1-text-primary', 'text-color-secondary': 'section-1-text-secondary'}}, 
+      dataPortofolio: [{id: 0, title: 'HI POS', name: 'Point Of Sales', desc: 'Manage all your business needs in your hand', imagedata: [{id: 1, desc: 'Realtime Dashboard, see how your outlet grow', image: 'assets/hi-pos-disp-dashboard-1.png'}, {id: 2, desc: 'Add an item and ready to sale ', image: 'assets/hi-pos-disp-edit-lib-1.png'}, {id: 3, desc: 'Cashier with best experience', image:'assets/hi-pos-disp-cashier-1.png'}, {id: 4, desc: 'Don\'t worry about your preferences, it\'s on the cloud!', image: 'assets/hi-pos-disp-pref-1.png'}], cssdata : {'bg-color-primary': 'section-1-bg-primary', 'bg-color-secondary':'section-1-bg-secondary', 'text-color-primary': 'section-1-text-primary', 'text-color-secondary': 'section-1-text-secondary'}}, 
                         // {id: 1, title: 'HI Admin', name: 'General Administration System', desc: 'Admin', imagedata: [{desc: 'Realtime Dashboard, see how your outlet grow', image: 'assets/hi-pos-disp-dashboard-1.png'}], cssdata : {'bg-color-primary': 'section-1-bg-primary', 'bg-color-secondary':'section-1-bg-secondary', 'text-color-primary': 'section-1-text-primary', 'text-color-secondary': 'section-1-text-secondary'}}
                       ],
       slide: 1,
+      showDialogDetail: false,
     });
 
     onMounted(() => {
@@ -137,23 +148,29 @@ export default defineComponent({
 
     const onClickAboutUs = () => {
       const el = document.getElementById('portofolio');
-
       if (el) {
         el.scrollIntoView({behavior: 'smooth'});
       }
     };
 
     const onClickDetailSection = (id) => {
+      state.showDialogDetail = true;
+    }
 
+    const onDialogDetail = (val) => {
+      state.showDialogDetail = val;
     }
 
     return {
       ...toRefs(state),
-      // onClickContact,
       onClickAboutUs,
       onClickDetailSection,
+      onDialogDetail,
     };
   },
+  components: {
+    dialogDetail: () => import('../components/DetailPortofolio.vue')
+  }
 });
 </script>
 
