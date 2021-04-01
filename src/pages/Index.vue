@@ -126,8 +126,6 @@
 
 <script>
 import { defineComponent, reactive, toRefs, onMounted, } from "@vue/composition-api";
-import { Notify } from "quasar";
-import DetailPortofolio from "../components/DetailPortofolio.vue";
 
 export default defineComponent({
   name: "PageIndex",
